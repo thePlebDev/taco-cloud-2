@@ -50,4 +50,12 @@ public class DesignTacoController {
 				.collect(Collectors.toList());
 	}
 	
+	@PostMapping // this means that it will handle any post requests to the design endpoint 
+	public String processDesign(Taco design) {
+		// saving objects and stuff will enventually go here
+		System.out.println("Design ---> " + design);
+		
+		return "redirect:/orders/current";
+	}
+	
 }
