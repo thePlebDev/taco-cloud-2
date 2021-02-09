@@ -14,21 +14,20 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-
-@RunWith(SpringRunner.class)
-@WebMvcTest(HomeController.class) // sets stuff up in the context of Spring MVC lets us throw requests.Instantiates only the HomeControlelr
-public class HomeControllerTest {
+@RunWith(SpringRunner.class) // boiler code to get the test to run in the right context
+@WebMvcTest(DesignTacoController.class) // runs the single controller 
+public class DesignTacoControllerTest {
+	// don't have to test ingredient because lombok is taking care of it 
 	
-	@Autowired
-	private MockMvc mockMvc; // injects MockMvc. allows us to test MVC without a HTTP server.
+	@Autowired // for the dependency injection
+	private MockMvc mockMvc;
 	
 	@Test
-	public void testHomePage() throws Exception{
-		mockMvc.perform(get("/"))
+	public void testDesignPage() throws Exception{
+		mockMvc.perform(get("/design"))
 			.andExpect(status().isOk())
-			.andExpect(view().name("home"));
+			.andExpect(view().name("design"));
 	}
-	
 	
 
 }
